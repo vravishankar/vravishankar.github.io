@@ -418,7 +418,7 @@ module.exports = {
 }
 ```
 ### 9.2 Automatic Splitting
-```json
+```javascript
 module.exports = {
   // …
   plugins: [
