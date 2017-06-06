@@ -161,7 +161,7 @@ Term 3
 
 GitHub's fenced code blocks are also supported with **Highlight.js** syntax highlighting:
 
-```
+```javascript
 // Foo
 var bar = 0;
 ```
