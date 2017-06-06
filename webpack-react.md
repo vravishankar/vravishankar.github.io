@@ -55,7 +55,7 @@ npm install --save-dev babel-preset-react-hmre
 ## 9. Configure webpack.config.js
 ```javascript
 const webpack = require('webpack');
-const path = require('path);
+const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
