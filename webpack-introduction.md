@@ -162,7 +162,7 @@ _main.js_
 require('./main.scss')
 ```
 _main.scss_
-```css
+```scss
 $primary: red;
 body {
     background: $primary;
@@ -418,7 +418,7 @@ module.exports = {
 }
 ```
 ### 9.2 Automatic Splitting
-```javascript
+```json
 module.exports = {
   // …
   plugins: [
