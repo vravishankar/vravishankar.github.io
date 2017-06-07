@@ -20,7 +20,7 @@ _**package.json**_
 
 "scripts": {
 	"start":"webpack-dev-server --progress -colors --hot"
-	...
+	
 }
 ...
 ```
@@ -224,7 +224,7 @@ npm install --save-dev babel-eslint
 _**.eslintrc**_
 ```json
 {
-	parser: "babel-eslint",
+	"parser": "babel-eslint",
 	"rules": {
 	}
 }
@@ -236,7 +236,7 @@ npm install --save-dev eslint-config-airbnb esling-plugin-import eslint-plugin-j
 _**.eslintrc**_
 ```json
 {
-	parser: "babel-eslint",
+	"parser": "babel-eslint",
 	"extends": ["airbnb-base"]
 }
 ```
