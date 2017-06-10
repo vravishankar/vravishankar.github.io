@@ -38,7 +38,7 @@ Now if you go to http://localhost:3000/people you will get
     ]
 }
 ```
-By default json-server runs in port number 3000. For some reasons you want to change the port then you can use the coomand as below:
+By default json-server runs in port number 3000. For some reasons you want to change the port then you can use the command as below:
 ```sh
 json-server --watch db.json --port 3004
 ```
