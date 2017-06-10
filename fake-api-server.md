@@ -38,6 +38,10 @@ Now if you go to http://localhost:3000/people you will get
     ]
 }
 ```
+By default json-server runs in port number 3000. For some reasons you want to change the port then you can use the coomand as below:
+```sh
+json-server --watch db.json --port 3004
+```
 Using tools like POSTMAN you can add/edit/update/remove data using appropriate HTTP methods like POST, PUT, DELETE & GET. Data will be added to memory but if you want to persist the data the server allows you take the snapshot of the data.
 
 In the termial Hit 's' to create a snapshot of the db.json file.
