@@ -3,9 +3,7 @@
 ### json-server
 json-server is a javascript library that helps to build an API server within minutes. Combining with Faker library, JSON-Server can be used to create and access loads of fake data that can be used for development and testing purpose.
 
-First you need to create a json file and name it 'db.json'
-
-For more on json-server please take a look at their official site in GitHub
+For more on json-server please take a look at their official site in GitHub - [json-server](https://github.com/typicode/json-server)
 ### Faker - Javascript Library
 Faker is a javascript library that can generate large number of fake data. Through its helper methods it can also create fake transactions or user interactions. It also supports multiple localities.
 
