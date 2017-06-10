@@ -69,3 +69,5 @@ module.exports = function() {
 json-server generate.js
 ```
 Go to browser and open http://localhost:3000 now you should have got 100 names and avatars in the json output.
+
+Courtesy: https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server
