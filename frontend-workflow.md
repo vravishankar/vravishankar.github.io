@@ -32,5 +32,15 @@ In this phase you check for the following items:
 3. check if the code you’ve just written breaks anything else on your
 site.
 ## Integration
+Code from different developers are merged in this phase. This usually involves pushing repos and merging git branches together. The nightly builds and continuous integration are part of this phase.
+1. Nightly Builds
+2. Continuous Integration
 ## Optimisation
+In this phase the main work is to optimise the code, style sheets, images so that the web page is loaded faster. The code and stylesheets sizes needs to be as small as possible for the pages to be loaded at the quickest possible time. 
+1. Minifying CSS
+2. Minifying and concatenating JavaScript 
+3. Combining multiple images into a sprite 
+4. Optimizing images and other assets
+5. Cachebusting assets
 ## Deployment
+This is the final phase of the workflow. Automation of this phase involves deploying the code to the production servers, cloud services like AWS, Digital Ocean or Heroku.
