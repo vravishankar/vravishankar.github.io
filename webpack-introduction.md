@@ -431,7 +431,49 @@ module.exports = {
 // …
 };
 ```
+## 10. Plugins
+### 10.1 HTMLWebpackPlugin
+__webpack.config.js
+```javascript
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+    template: 'src/index.html',
+    title: 'Webpack Tutorial',
+    filename: 'index.html'
+});
+const path = require('path');
 
+const config = {
+    entry: './src/index/js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist');
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader
+            }
+        ]
+    },
+    plugins: [HTMLWebpackPluginConfig]
+}
+module.exports = config
+```
+__src/index.html__
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+  </body>
+</html>
+```
 
 
 
