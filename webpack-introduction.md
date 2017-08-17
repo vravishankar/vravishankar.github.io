@@ -433,7 +433,7 @@ module.exports = {
 ```
 ## 10. Plugins
 ### 10.1 HTMLWebpackPlugin
-__webpack.config.js
+__webpack.config.js__
 ```javascript
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
@@ -454,7 +454,7 @@ const config = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: 'babel-loader
+                use: 'babel-loader,
             }
         ]
     },
