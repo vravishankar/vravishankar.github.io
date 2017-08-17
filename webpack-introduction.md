@@ -499,8 +499,40 @@ const config = {
 
 module.exports = config
 ```
+### 10.3 Copy Webpack Plugin
+```javascript
+const config = {
+    entry: {
+        app: addEntryPoint('./src/Router.jsx'),
+        vendor: ['lodash', 'react', 'react-router', 'react-dom', 'rc-slider']
+    },
+    output: {
+        path: options.devServer ? path.join( __dirname, 'public', 'js') : 'public',
+        filename: '[name]-[chunkhash].js',
+        publicPath: '',
+    },
+    plugins: [
+        new CommonsChunkPlugin({
+            name: 'commons',
+            filename: 'commons-[hash].js',
+            chunks: ['vendor', 'app']
+        }),
 
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: path.join( __dirname, 'src', 'index.tpl.html'),
+            chunks: ['commons', 'app']
+        }),
 
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, 'src', 'assets', 'images'),
+            to: 'images'
+        }])
+    ]
+};
+
+module.exports = config;
+```
 
 
 
