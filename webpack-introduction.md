@@ -433,6 +433,9 @@ module.exports = {
 ```
 ## 10. Plugins
 ### 10.1 HTMLWebpackPlugin
+```sh
+npm install --save-dev html-webpack-plugin
+```
 __webpack.config.js__
 ```javascript
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -474,9 +477,28 @@ __src/index.html__
   </body>
 </html>
 ```
+### 10.2 Clean Webpack Plugin
+```sh
+npm -install --save-dev clean-webpack-plugin
+```
+__webpack.config.js__
+```javascript
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const config = {
+    entry: './src/index.js'
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname,'/dist')
+    },
+    plugins: [
+        new CleanWebpackPlugin(['dist'])
+    ]
+}
 
-
+module.exports = config
+```
 
 
 
