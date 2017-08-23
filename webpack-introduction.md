@@ -431,8 +431,12 @@ module.exports = {
 // …
 };
 ```
-## 10. Plugins
-### 10.1 HTMLWebpackPlugin
+## 10. Caching
+### 10.1 Code Caching
+### 10.2 Cache Bursting
+
+## 11. Plugins
+### 11.1 HTMLWebpackPlugin
 ```sh
 npm install --save-dev html-webpack-plugin
 ```
@@ -477,7 +481,7 @@ __src/index.html__
   </body>
 </html>
 ```
-### 10.2 Clean Webpack Plugin
+### 11.2 Clean Webpack Plugin
 ```sh
 npm -install --save-dev clean-webpack-plugin
 ```
@@ -499,7 +503,7 @@ const config = {
 
 module.exports = config
 ```
-### 10.3 Copy Webpack Plugin
+### 11.3 Copy Webpack Plugin
 ```javascript
 const config = {
     entry: {
@@ -534,6 +538,13 @@ const config = {
 module.exports = config;
 ```
 
+## 12. Webpack Development Server
+### 12.1 Basic Webpack Development Server
+### 12.2 Using Proxy
 
+## 13. Webpack and Express
 
+## 14. Deployment
+### 14.1 Static Sites
+### 14.2 Dynamic Sites
 
