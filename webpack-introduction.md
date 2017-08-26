@@ -546,5 +546,11 @@ module.exports = config;
 
 ## 14. Deployment
 ### 14.1 Static Sites
+#### 14.1.1 Using Surge
+#### 14.2.2 Using Github Pages
+#### 14.2.3 Using S3
 ### 14.2 Dynamic Sites
+#### 14.2.1 Using Amazon Wed Services
+#### 14.2.2 Using Heroku
+#### 14.2.3 Using Microsoft Azure
 
