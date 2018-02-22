@@ -43,3 +43,10 @@ localkube: Running
 kubectl: Correctly Configured: pointing to minikube-vm at 192.168.99.10
 ```
 
+### Step 5 - Stop minikube
+minikube can be stopped using the **minikube stop** command.
+```sh
+$ minikube stop
+Stopping local Kubernetes cluster...
+Machine stopped
+```
