@@ -1,5 +1,53 @@
 # Single Server Cluster Using minikube
 
+## Installation of kubectl on Mac OS
+
+There are two ways of installing kubectl in macos - manually or using the home brew manager.
+
+### Option 1 - Manual Installation of kubectl
+- Download the latest stable kubectl binary
+```sh
+$ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
+```
+- Make the kubectl binary executable
+```sh
+$ chmod +x ./kubectl
+```
+- Move the kubectl binary to the PATH
+```sh
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
+### Option 2 - Using HomeBrew
+```sh
+$ brew install kubectl
+```
+
+To connect to the kubernetes cluster, **kubectl** needs the master node endpoint and the credentials to connect to it. While starting minikube the startup process by default creates a config file inside the **.kube** directory which is inside the user's home directory. This configuration file has all the connection details. By default, the kubectl binary accesses this file to find the Master Node's connection endpoint, along with the credentials. To look at the connection details, we can either see the content of the ~/.kube/config(Linux) file, or run the following command:
+
+```sh
+$ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /Users/nkhare/.minikube/ca.crt
+    server: https://192.168.99.100:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /Users/nkhare/.minikube/apiserver.crt
+    client-key: /Users/nkhare/.minikube/apiserver.key
+```
+
 ## Installation of Minikube on Mac OS
 
 To install minikube on Mac OS you need a hypervisor either **VirtualBox** or **xhyve**. This installation will use the **VirtualBox** hypervisor.
@@ -50,3 +98,12 @@ $ minikube stop
 Stopping local Kubernetes cluster...
 Machine stopped
 ```
+
+Once **kubectl** and **minikube** are installed,  we can get information about the minikube cluster with the kubectl cluster-info command:
+```sh
+$ kubectl cluster-info
+Kubernetes master is running at https://192.168.99.100:8443
+```
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+You can find more details about the kubectl command line options [here](https://kubernetes.io/docs/user-guide/kubectl-overview/)
