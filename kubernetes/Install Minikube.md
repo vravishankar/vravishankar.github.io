@@ -107,3 +107,43 @@ Kubernetes master is running at https://192.168.99.100:8443
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 You can find more details about the kubectl command line options [here](https://kubernetes.io/docs/user-guide/kubectl-overview/)
+
+### Step 6 - Dashboard
+
+The Kubernetes Dashboard provides the user interface for the Kubernetes cluster. To access the Dashboard of Minikube, we can use minikube dashboard, which would open a new tab on our web browser, displaying the Kubernetes dashboard:
+
+```sh
+$ minikube dashboard
+```
+
+### Using kubectl proxy
+Using the kubectl proxy command, kubectl would authenticate with the API Server on the Master Node and would make the dashboard available on http://localhost:8001/ui.
+
+```sh
+$ kubectl proxy
+```sh
+Starting to serve on 127.0.0.1:8001
+
+After running the above command, we can access the dashboard at http://127.0.0.1:8001/ui.
+
+When kubectl proxy is configured, we can send requests to localhost on the proxy port:
+
+```sh
+$ curl http://localhost:8001/
+{
+  "paths": [
+    "/api",
+    "/api/v1",
+    "/apis",
+    "/apis/apps",
+    ......
+    ......
+    "/logs",
+    "/metrics",
+    "/swaggerapi/",
+    "/ui/",
+    "/version"
+  ]
+}%
+```
+With the above curl request, we requested all the API endpoints from the API Server.
