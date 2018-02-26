@@ -107,7 +107,7 @@ Control groups (also called cgroups) is a Linux kernel feature that isolates, pr
 Lastly, union file systems is another feature Docker uses:
 
 #### 3) Isolated Union file system:
-Described above in the Docker Images section :)
+Images are read-only templates that you build from a set of instructions written in your Dockerfile. Images define both what you want your packaged application and its dependencies to look like *and* what processes to run when it’s launched.
 
 While Docker is certainly gaining a lot of steam, it will not become a real threat to VMs. Containers will continue to gain ground, but there are many use cases where VMs are still better suited. For instance, if you need to run multiple applications on multiple servers, it probably makes sense to use VMs. On the other hand, if you need to run many **copies** of a single application, Docker offers some compelling advantages.
 
