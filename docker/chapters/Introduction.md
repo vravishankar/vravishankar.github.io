@@ -120,7 +120,7 @@ Of course, issues like security and management are certain to evolve as containe
 ## Docker Components
 
 <p align="center">
-  <img src="https://github.com/vravishankar/vravishankar.github.io/blob/master/docker/docker_architecture.png" width="600" height="700"/>
+  <img src="https://github.com/vravishankar/vravishankar.github.io/blob/master/docker/img/docker_architecture.png" width="600" height="700"/>
 </p>
 
 ### Docker Engine
