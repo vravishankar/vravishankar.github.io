@@ -61,6 +61,8 @@ A bare metal hypervisor environment tackles the performance issue by installing 
 >
 > Well, since the VM has a virtual operating system of its own, the hypervisor plays an essential role in providing the VMs with a platform to manage and execute this guest operating system. It allows for host computers to share their resources amongst the virtual machines that are running as guests on top of them.
 
+![Virtual Machines](https://www.docker.com/sites/default/files/VM%402x.png)
+
 As you can see in the diagram above, VMs package up the virtual hardware, a kernel (i.e. OS) and user space for each new VM.
 
 ### Containers
