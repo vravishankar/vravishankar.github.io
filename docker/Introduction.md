@@ -18,6 +18,15 @@ Linux cgroups, originally developed by Google, govern the isolation and usage of
 
 Namespaces deal with resource isolation for a single process, while cgroups manage resources for a group of processes.
 
+Containerization is increasingly popular because containers are:
+
+* Flexible: Even the most complex applications can be containerized.
+* Lightweight: Containers leverage and share the host kernel.
+* Interchangeable: You can deploy updates and upgrades on-the-fly.
+* Portable: You can build locally, deploy to the cloud, and run anywhere.
+* Scalable: You can increase and automatically distribute container replicas.
+* Stackable: You can stack services vertically and on-the-fly.
+
 ## Containers vs Virtual Machines
 
 The industry standard today is to use Virtual Machines (VMs) to run software applications. VMs run applications inside a guest Operating System, which runs on virtual hardware powered by the server’s host OS.
@@ -71,10 +80,15 @@ Namespaces provide containers with their own view of the underlying Linux system
 There are several different types of namespaces in a kernel that Docker makes use of, for example:
 
 a. NET: Provides a container with its own view of the network stack of the system (e.g. its own network devices, IP addresses, IP routing tables, /proc/net directory, port numbers, etc.).
+
 b. PID: PID stands for Process ID. If you’ve ever ran ps aux in the command line to check what processes are running on your system, you’ll have seen a column named “PID”. The PID namespace gives containers their own scoped view of processes they can view and interact with, including an independent init (PID 1), which is the “ancestor of all processes”.
+
 c. MNT: Gives a container its own view of the “mounts” on the system. So, processes in different mount namespaces have different views of the filesystem hierarchy.
+
 d. UTS: UTS stands for UNIX Timesharing System. It allows a process to identify system identifiers (i.e. hostname, domainname, etc.). UTS allows containers to have their own hostname and NIS domain name that is independent of other containers and the host system.
+
 e. IPC: IPC stands for InterProcess Communication. IPC namespace is responsible for isolating IPC resources between processes running inside each container.
+
 f. USER: This namespace is used to isolate users within each container. It functions by allowing containers to have a different view of the uid (user ID) and gid (group ID) ranges, as compared with the host system. As a result, a process’s uid and gid can be different inside and outside a user namespace, which also allows a process to have an unprivileged user outside a container without sacrificing root privilege inside a container.
 
 Docker uses these namespaces together in order to isolate and begin the creation of a container. The next feature is called control groups.
@@ -97,5 +111,63 @@ Of course, issues like security and management are certain to evolve as containe
 
 ## Docker Components
 
+### Docker Engine
+Docker engine is the layer on which Docker runs. It’s a lightweight runtime and tooling that manages containers, images, builds, and more. It runs natively on Linux systems and is made up of:
+
+1. A Docker Daemon that runs in the host computer.
+2. A Docker Client that then communicates with the Docker Daemon to execute commands.
+3. A REST API for interacting with the Docker Daemon remotely.
+
+### Docker Client
+The Docker Client is what you, as the end-user of Docker, communicate with. Think of it as the UI for Docker. For example, when you do…
+```sh
+docker build raviv/someimage .
+```
+you are communicating to the Docker Client, which then communicates your instructions to the Docker Daemon.
+
+### Docker Daemon
+The Docker daemon is what actually executes commands sent to the Docker Client — like building, running, and distributing your containers. The Docker Daemon runs on the host machine, but as a user, you never communicate directly with the Daemon. The Docker Client can run on the host machine as well, but it’s not required to. It can run on a different machine and communicate with the Docker Daemon that’s running on the host machine.
+
+### Dockerfile
+A Dockerfile is where you write the instructions to build a Docker image. These instructions can be:
+
+* RUN apt-get y install some-package: to install a software package
+* EXPOSE 8000: to expose a port
+* ENV ANT_HOME /usr/local/apache-ant to pass an environment variable
+and so forth. Once you’ve got your Dockerfile set up, you can use the docker build command to build an image from it. Here’s an example of a Dockerfile:
+
+### Docker Image
+Images are read-only templates that you build from a set of instructions written in your Dockerfile. Images define both what you want your packaged application and its dependencies to look like *and* what processes to run when it’s launched.
+
+The Docker image is built using a Dockerfile. Each instruction in the Dockerfile adds a new “layer” to the image, with layers representing a portion of the images file system that either adds to or replaces the layer below it. Layers are key to Docker’s lightweight yet powerful structure. Docker uses a Union File System to achieve this:
+
+### Union File Systems
+Docker uses Union File Systems to build up an image. You can think of a Union File System as a stackable file system, meaning files and directories of separate file systems (known as branches) can be transparently overlaid to form a single file system.
+
+The contents of directories which have the same path within the overlaid branches are seen as a single merged directory, which avoids the need to create separate copies of each layer. Instead, they can all be given pointers to the same resource; when certain layers need to be modified, it’ll create a copy and modify a local copy, leaving the original unchanged. That’s how file systems can *appear* writable without actually allowing writes. (In other words, a “copy-on-write” system.)
+
+#### Layered systems offer two main benefits:
+
+1. Duplication-free: layers help avoid duplicating a complete set of files every time you use an image to create and run a new container, making instantiation of docker containers very fast and cheap.
+2. Layer segregation: Making a change is much faster — when you change an image, Docker only propagates the updates to the layer that was changed.
+
+### Volumes
+Volumes are the “data” part of a container, initialized when a container is created. Volumes allow you to persist and share a container’s data. Data volumes are separate from the default Union File System and exist as normal directories and files on the host filesystem. So, even if you destroy, update, or rebuild your container, the data volumes will remain untouched. When you want to update a volume, you make changes to it directly. (As an added bonus, data volumes can be shared and reused among multiple containers, which is pretty neat.)
+
+### Docker Containers
+A Docker container, as discussed above, wraps an application’s software into an invisible box with everything the application needs to run. That includes the operating system, application code, runtime, system tools, system libraries, and etc. Docker containers are built off Docker images. Since images are read-only, Docker adds a read-write file system over the read-only file system of the image to create a container.
+
+
+Moreover, then creating the container, Docker creates a network interface so that the container can talk to the local host, attaches an available IP address to the container, and executes the process that you specified to run your application when defining the image.
+
+Once you’ve successfully created a container, you can then run it in any environment without having to make changes.
 
 ## Advantages of Docker
+
+**1. Ease of use:** Docker has made it much easier for anyone — developers, systems admins, architects and others — to take advantage of containers in order to quickly build and test portable applications. It allows anyone to package an application on their laptop, which in turn can run unmodified on any public cloud, private cloud, or even bare metal. The mantra is: “build once, run anywhere.”
+
+**2. Speed:** Docker containers are very lightweight and fast. Since containers are just sandboxed environments running on the kernel, they take up fewer resources. You can create and run a Docker container in seconds, compared to VMs which might take longer because they have to boot up a full virtual operating system every time.
+
+**3. Docker Hub:** Docker users also benefit from the increasingly rich ecosystem of Docker Hub, which you can think of as an “app store for Docker images.” Docker Hub has tens of thousands of public images created by the community that are readily available for use. It’s incredibly easy to search for images that meet your needs, ready to pull down and use with little-to-no modification.
+
+**4. Modularity and Scalability:** Docker makes it easy to break out your application’s functionality into individual containers. For example, you might have your Postgres database running in one container and your Redis server in another while your Node.js app is in another. With Docker, it’s become easier to link these containers together to create your application, making it easy to scale or update components independently in the future.
