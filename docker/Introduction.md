@@ -62,10 +62,8 @@ A bare metal hypervisor environment tackles the performance issue by installing 
 > Well, since the VM has a virtual operating system of its own, the hypervisor plays an essential role in providing the VMs with a platform to manage and execute this guest operating system. It allows for host computers to share their resources amongst the virtual machines that are running as guests on top of them.
 
 <p align="center">
-  <img src="https://www.docker.com/sites/default/files/VM%402x.png" width="450px" height="300px"/>
+  <img src="https://www.docker.com/sites/default/files/VM%402x.png" width="350px" height="400px"/>
 </p>
-
-![Virtual Machines](https://www.docker.com/sites/default/files/VM%402x.png)
 
 As you can see in the diagram above, VMs package up the virtual hardware, a kernel (i.e. OS) and user space for each new VM.
 
@@ -75,6 +73,10 @@ Unlike a VM which provides hardware virtualization, a container provides operati
 For all intent and purposes, containers look like a VM. For example, they have private space for processing, can execute commands as root, have a private network interface and IP address, allow custom routes and iptable rules, can mount file systems, and etc.
 
 The one big difference between containers and VMs is that containers **share** the host system’s kernel with other containers.
+
+<p align="center">
+  <img src="https://www.docker.com/sites/default/files/Container%402x.png" width="350px" height="400px"/>
+</p>
 
 This diagram shows you that containers package up just the user space, and not the kernel or virtual hardware like a VM does. Each container gets its own isolated user space to allow multiple containers to run on a single host machine. We can see that all the operating system level architecture is being shared across containers. The only parts that are created from scratch are the bins and libs. This is what makes containers so lightweight.
 
