@@ -119,6 +119,10 @@ Of course, issues like security and management are certain to evolve as containe
 
 ## Docker Components
 
+<p align="center">
+  <img src="https://github.com/vravishankar/vravishankar.github.io/blob/master/docker/docker_architecture.png" width="600" height="700"/>
+</p>
+
 ### Docker Engine
 Docker engine is the layer on which Docker runs. It’s a lightweight runtime and tooling that manages containers, images, builds, and more. It runs natively on Linux systems and is made up of:
 
@@ -143,6 +147,11 @@ A Dockerfile is where you write the instructions to build a Docker image. These 
 * EXPOSE 8000: to expose a port
 * ENV ANT_HOME /usr/local/apache-ant to pass an environment variable
 and so forth. Once you’ve got your Dockerfile set up, you can use the docker build command to build an image from it. Here’s an example of a Dockerfile:
+
+```sh
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+```
 
 ### Docker Image
 Images are read-only templates that you build from a set of instructions written in your Dockerfile. Images define both what you want your packaged application and its dependencies to look like *and* what processes to run when it’s launched.
