@@ -8,4 +8,4 @@
 
 * [4. Docker Sample Containers](chapters/ContainerSamples.md)
 
-* [5. Docker Using Dockerfile(chapters/Dockerfile.md)
+* [5. Docker Using Dockerfile](chapters/Dockerfile.md)
