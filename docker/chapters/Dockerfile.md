@@ -72,4 +72,5 @@ Again to see results run cat ./vol/results.
 
 ## Resources
 [1. Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
 [2. 9 Common Dockerfile Mistakes](https://runnable.com/blog/9-common-dockerfile-mistakes)
