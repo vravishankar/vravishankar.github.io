@@ -69,3 +69,7 @@ docker run --rm -e SITE_URL=https://amazon.com/ -v $(pwd)/vol:/data/:rw test-cur
 100  2671  100  2671    0     0   1508      0  0:00:01  0:00:01 --:--:-- 1304k
 ```
 Again to see results run cat ./vol/results.
+
+## Resources
+[1. Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+[2. 9 Common Dockerfile Mistakes(https://runnable.com/blog/9-common-dockerfile-mistakes)
