@@ -8,6 +8,4 @@
 
 * [4. Docker Static Website Container](chapters/Website.md)
 
-* [4. Docker Sample Containers](chapters/ContainerSamples.md)
-
 * [5. Docker Using Dockerfile](chapters/Dockerfile.md)
