@@ -1,11 +1,11 @@
 # Node Server in ES6 (Using Babel)
-#### Install the Dependencies
+#### Install the Development Dependencies
 ```sh
 $ npm install --save-dev babel-cli
-```
-```sh
+
 $ npm install --save-dev babel-preset-es2015 babel-preset-stage-2
 ```
+#### Install the Production Dependencies
 ```sh
 $ npm install express
 ```
@@ -19,7 +19,7 @@ app.listen(port, () => {
   console.log(`Server running in port ${port}`);
 })
 ```
-Update the following in package.json
+#### Update the following in package.json
 ```json
 ...
 
@@ -89,9 +89,10 @@ touch .babelrc
 ```
 
 #### Now we can remove the duplicated options from our npm scripts
-```sh
+```json
 "scripts": {
-  ...
+  "start": "nodemon lib/index.js --exec babel-node",
+  "build": "babel lib -d dist",
   "serve": "node dist/index.js"
 }
 ```
